@@ -1,15 +1,11 @@
-import os
-
 from .config import *
 
 
 SECRET_KEY = os.getenv('DJANGO_DEVELOPMENT_SECRET_KEY')
 
-ALLOWED_HOSTS = os.getenv('DEVELOPMENT_ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = os.getenv('DEVELOPMENT_ALLOWED_HOSTS', 'localhost').split()
 
-INTERNAL_IPS = os.getenv('DEBUG_HOSTS').split(',')
-
-INSTALLED_APPS += ['debug_toolbar']
+INTERNAL_IPS = os.getenv('DEBUG_HOSTS', 'localhost').split()
 
 DEBUG = True
 
@@ -25,4 +21,3 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT')
     }
 }
-
