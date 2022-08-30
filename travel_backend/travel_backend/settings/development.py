@@ -3,7 +3,7 @@ from .config import *
 
 SECRET_KEY = os.getenv('DJANGO_DEVELOPMENT_SECRET_KEY')
 
-ALLOWED_HOSTS = os.getenv('DEVELOPMENT_ALLOWED_HOSTS', 'localhost').split()
+ALLOWED_HOSTS = ['*']
 
 INTERNAL_IPS = os.getenv('DEBUG_HOSTS', 'localhost').split()
 

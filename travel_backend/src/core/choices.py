@@ -1,0 +1,29 @@
+APARTMENT = 'APARTMENT'
+BALCONY = 'BALCONY'
+CONNECTED_ROOMS = 'CONNECTED_ROOMS'
+BUSINESS = 'BUSINESS'
+DELUXE = 'DELUXE'
+DUPLEX = 'DUPLEX'
+FAMILY_ROOM = 'FAMILY_ROOM'
+FAMILY_STUDIO = 'FAMILY_STUDIO'
+HONEYMOON = 'HONEYMOON'
+PRESIDENT = 'PRESIDENT'
+STANDARD = 'STANDARD'
+STUDIO = 'STUDIO'
+SUPERIOR = 'SUPERIOR'
+
+ROOM_CHOICES = [
+    (APARTMENT, 'Apartment'),
+    (BALCONY, 'Balcony'),
+    (CONNECTED_ROOMS, 'Connected rooms'),
+    (BUSINESS, 'Business'),
+    (DELUXE, 'Deluxe'),
+    (DUPLEX, 'Duplex'),
+    (FAMILY_ROOM, 'Family room'),
+    (FAMILY_STUDIO, 'Family studio'),
+    (HONEYMOON, 'Honeymoon'),
+    (PRESIDENT, 'President'),
+    (STANDARD, 'Standard'),
+    (STUDIO, 'Studio'),
+    (SUPERIOR, 'Superior'),
+]

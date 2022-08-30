@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'src.users',
 ]
 
+AUTH_USER_MODEL = 'users.Customer'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -95,9 +97,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Minsk'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -105,8 +109,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
-STATIC_ROOT = 'static'
+STATICFILES_DIRS = [
+    os.path.join('static'),
+]
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR / 'static' / 'media')
 
 CORS_ALLOW_ALL_ORIGINS = True
 
