@@ -27,3 +27,19 @@ ROOM_CHOICES = [
     (STUDIO, 'Studio'),
     (SUPERIOR, 'Superior'),
 ]
+
+TOURS_OF_THE_DAY = 'TOURS_OF_THE_DAY'
+HOT_TOURS = 'HOT_TOURS'
+EXCLUSIVE_TOURS = 'EXCLUSIVE_TOURS'
+BUS_TOURS = 'BUS_TOURS'
+CRUISES = 'CRUISES'
+FLIGHTS = 'FLIGHTS'
+
+TOURS_CHOICES = [
+    (TOURS_OF_THE_DAY, 'Tours of the day'),
+    (HOT_TOURS, 'Hot tours'),
+    (EXCLUSIVE_TOURS, 'Exclusive tours'),
+    (BUS_TOURS, 'Bus tours'),
+    (CRUISES, 'Cruises'),
+    (FLIGHTS, 'Flights'),
+]

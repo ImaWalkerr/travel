@@ -1,6 +1,41 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from src.core.choices import ROOM_CHOICES, STANDARD
+from src.core.choices import (
+    ROOM_CHOICES,
+    STANDARD,
+    TOURS_CHOICES,
+    FLIGHTS,
+)
+
+
+class Countries(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Country name')
+    language = models.CharField(max_length=255, blank=True, verbose_name='Country language')
+    description = models.TextField(max_length=10000, blank=True, verbose_name='Country description')
+    visa = models.TextField(max_length=10000, blank=True, verbose_name='Country visa')
+    insurance = models.TextField(max_length=10000, blank=True, verbose_name='Country insurance')
+    mem = models.TextField(max_length=10000, blank=True, verbose_name='Tourist mem list')
+    transfer = models.TextField(max_length=10000, blank=True, verbose_name='Country transfer')
+    support = models.CharField(max_length=255, blank=True, verbose_name='Country support')
+    travels = models.ManyToManyField(
+        to='tourism.Travel',
+        verbose_name='Country travels',
+        related_name='country_travels'
+    )
+    excursions = models.ManyToManyField(
+        to='tourism.Excursion',
+        verbose_name='Country excursions',
+        related_name='country_excursions'
+    )
+
+    def __str__(self):
+        return f'{self.name, self.language, self.description}'
+
+    class Meta:
+        db_table = 'countries'
+        verbose_name = 'Country'
+        verbose_name_plural = 'Countries'
+        ordering = ('id',)
 
 
 class Travel(models.Model):
@@ -105,6 +140,12 @@ class HotelPhoto(models.Model):
 class Tour(models.Model):
     name = models.CharField(max_length=255, verbose_name='Tour name')
     description = models.TextField(max_length=10000, blank=True, verbose_name='Tour description')
+    tour_type = models.CharField(
+        choices=TOURS_CHOICES,
+        default=FLIGHTS,
+        max_length=255,
+        verbose_name='Tour type'
+    )
     rating = models.IntegerField(
         default=5,
         validators=[
