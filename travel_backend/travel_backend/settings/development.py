@@ -1,12 +1,21 @@
+import environ
 from datetime import timedelta
 from .config import *
 
 
-SECRET_KEY = os.getenv('DJANGO_DEVELOPMENT_SECRET_KEY')
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(ENV_DIR, 'env/development/.env'))
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, True)
+)
+
+SECRET_KEY = env('DJANGO_DEVELOPMENT_SECRET_KEY')
 
 ALLOWED_HOSTS = ['*']
 
-INTERNAL_IPS = os.getenv('DEBUG_HOSTS', 'localhost').split()
+INTERNAL_IPS = ['*']
 
 DEBUG = True
 
@@ -15,11 +24,11 @@ MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT')
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT')
     }
 }
 
